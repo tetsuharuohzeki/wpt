@@ -595,7 +595,7 @@ class WdspecExecutor(TestExecutor):
 
     def __init__(self, logger, browser, server_config, webdriver_binary,
                  webdriver_args, timeout_multiplier=1, capabilities=None,
-                 debug_info=None, environ=None, **kwargs):
+                 debug_info=None, environ=None, debug_test=False, **kwargs):
         self.do_delayed_imports()
         TestExecutor.__init__(self, logger, browser, server_config,
                               timeout_multiplier=timeout_multiplier,
@@ -631,7 +631,8 @@ class WdspecExecutor(TestExecutor):
                                 self.server_config,
                                 session_config,
                                 timeout=timeout,
-                                environ=self.environ)
+                                environ=self.environ,
+                                debug_test=self.debug_test)
 
     def do_delayed_imports(self):
         global pytestrunner
